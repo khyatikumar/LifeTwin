@@ -1,0 +1,9 @@
+bonus:
+  Low: 10
+  Medium: 5
+  High: -10
+
+recommendation:
+  highly_recommended: 85
+  recommended: 70
+  consider: 50

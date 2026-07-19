@@ -1,0 +1,8 @@
+{
+  "name": "LifeTwin AI",
+  "description": "An AI-powered personal digital twin application that helps users make important life decisions through simulations, financial planning, goal tracking, and strategic analysis.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

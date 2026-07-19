@@ -1,0 +1,5 @@
+salary_threshold: 180000
+
+high_risk:
+  remote_ratio: 0
+  company_size: S
