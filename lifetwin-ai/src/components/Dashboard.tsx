@@ -38,13 +38,13 @@ export default function Dashboard({ state, setActiveTab }: DashboardProps) {
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2">
             <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-indigo-100/50 text-indigo-700 text-[10px] font-mono rounded-full border border-indigo-200/50">
-              <Sparkles className="h-3 w-3" /> Digital Twin Calibration: Stable
+              <Sparkles className="h-3 w-3" /> Life Plan Status: Ready
             </div>
             <h1 className="text-2xl md:text-3xl font-geist font-bold tracking-tight text-slate-900">
               Hello, {profile.fullName || "Alex Sterling"}
             </h1>
             <p className="text-slate-600 text-xs md:text-sm max-w-2xl font-sans">
-              Your digital twin has synced your profile, financial architecture, goals, timeline, and decision history.
+              Your profile, money picture, goals, timeline, and decision history are ready.
               Focus area: <span className="text-indigo-600 font-semibold">{primaryGoal}</span>.
             </p>
           </div>
@@ -53,7 +53,7 @@ export default function Dashboard({ state, setActiveTab }: DashboardProps) {
             onClick={() => setActiveTab("decision")}
             className="px-5 py-3 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold rounded-xl transition-all self-start md:self-center shadow-lg shadow-indigo-600/15 cursor-pointer hover:scale-102 flex items-center gap-2"
           >
-            <Brain className="h-4 w-4" /> Consult Twin Brain
+            <Brain className="h-4 w-4" /> Ask Decision Guide
           </button>
         </div>
       </div>
@@ -63,7 +63,7 @@ export default function Dashboard({ state, setActiveTab }: DashboardProps) {
         {/* Card 1: Net Worth */}
         <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm flex flex-col justify-between">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider font-sans">Net Worth Aggregate</span>
+            <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider font-sans">Net Worth</span>
             <div className="p-2 bg-emerald-50 text-emerald-600 rounded-lg">
               <DollarSign className="h-4 w-4" />
             </div>
@@ -81,7 +81,7 @@ export default function Dashboard({ state, setActiveTab }: DashboardProps) {
         {/* Card 2: Savings Efficiency */}
         <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm flex flex-col justify-between">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider font-sans">Savings Efficiency</span>
+            <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider font-sans">Savings Rate</span>
             <div className="p-2 bg-indigo-50 text-indigo-600 rounded-lg">
               <Percent className="h-4 w-4" />
             </div>
@@ -99,7 +99,7 @@ export default function Dashboard({ state, setActiveTab }: DashboardProps) {
         {/* Card 3: Strategic Goals */}
         <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm flex flex-col justify-between">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider font-sans">Strategic Ambitions</span>
+            <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider font-sans">Active Goals</span>
             <div className="p-2 bg-purple-50 text-purple-600 rounded-lg">
               <Target className="h-4 w-4" />
             </div>
@@ -109,7 +109,7 @@ export default function Dashboard({ state, setActiveTab }: DashboardProps) {
               {activeGoalsCount} / {goals.length}
             </h3>
             <p className="text-xs text-slate-400 font-sans mt-1">
-              Active tracks under observation
+              Goals currently in progress
             </p>
           </div>
         </div>
@@ -117,7 +117,7 @@ export default function Dashboard({ state, setActiveTab }: DashboardProps) {
         {/* Card 4: Twin Confidence index */}
         <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm flex flex-col justify-between">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider font-sans">Simulations Modeled</span>
+            <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider font-sans">Plans Reviewed</span>
             <div className="p-2 bg-pink-50 text-pink-600 rounded-lg">
               <TrendingUp className="h-4 w-4" />
             </div>
@@ -127,7 +127,7 @@ export default function Dashboard({ state, setActiveTab }: DashboardProps) {
               {simulations.length + decisions.length}
             </h3>
             <p className="text-xs text-slate-400 font-sans mt-1">
-              Decision matrices calculated
+              Choices and paths reviewed
             </p>
           </div>
         </div>
@@ -144,9 +144,9 @@ export default function Dashboard({ state, setActiveTab }: DashboardProps) {
             <div className="flex items-center justify-between border-b border-slate-100 pb-4">
               <div className="space-y-0.5">
                 <h3 className="font-geist font-bold text-slate-900 text-sm tracking-tight uppercase flex items-center gap-1.5">
-                  <Brain className="h-4.5 w-4.5 text-indigo-600" /> Recent AI Twin Recommendation
+                  <Brain className="h-4.5 w-4.5 text-indigo-600" /> Recent Decision Recommendation
                 </h3>
-                <p className="text-xs text-slate-500">The latest choice matrix aligned with your strategic intentions.</p>
+                <p className="text-xs text-slate-500">The latest recommendation based on your goals and profile.</p>
               </div>
               <button 
                 onClick={() => setActiveTab("decision")}
@@ -179,7 +179,7 @@ export default function Dashboard({ state, setActiveTab }: DashboardProps) {
               </div>
             ) : (
               <div className="p-8 text-center text-slate-400 text-xs font-sans">
-                No decisions consulted yet. Head to the AI Decision Laboratory!
+                No decisions reviewed yet. Open the Decision Guide to get started.
               </div>
             )}
           </div>
@@ -189,15 +189,15 @@ export default function Dashboard({ state, setActiveTab }: DashboardProps) {
             <div className="flex items-center justify-between border-b border-slate-100 pb-4">
               <div className="space-y-0.5">
                 <h3 className="font-geist font-bold text-slate-900 text-sm tracking-tight uppercase flex items-center gap-1.5">
-                  <TrendingUp className="h-4.5 w-4.5 text-pink-600" /> Recent Career Simulation
+                  <TrendingUp className="h-4.5 w-4.5 text-pink-600" /> Recent Career Path
                 </h3>
-                <p className="text-xs text-slate-500">Modeling structural outcomes and net-worth growth differentials.</p>
+                <p className="text-xs text-slate-500">Compare possible career outcomes and money changes.</p>
               </div>
               <button 
                 onClick={() => setActiveTab("simulation")}
                 className="text-xs font-semibold text-pink-600 hover:text-pink-800 flex items-center gap-1"
               >
-                Simulate Path <ArrowUpRight className="h-3.5 w-3.5" />
+                Explore Path <ArrowUpRight className="h-3.5 w-3.5" />
               </button>
             </div>
 
@@ -216,21 +216,21 @@ export default function Dashboard({ state, setActiveTab }: DashboardProps) {
                     <p className="text-xs font-semibold text-slate-700">${simulations[0].currentSalary.toLocaleString()}/yr</p>
                   </div>
                   <div>
-                    <p className="text-[10px] text-slate-400 uppercase font-mono">Simulated Delta</p>
+                    <p className="text-[10px] text-slate-400 uppercase font-mono">Income Change</p>
                     <p className="text-xs font-bold text-emerald-600">+${simulations[0].difference.toLocaleString()}/yr</p>
                   </div>
                   <div>
-                    <p className="text-[10px] text-slate-400 uppercase font-mono">Simulated Salary</p>
+                    <p className="text-[10px] text-slate-400 uppercase font-mono">Possible Salary</p>
                     <p className="text-xs font-semibold text-indigo-600">${simulations[0].simulatedSalary.toLocaleString()}/yr</p>
                   </div>
                 </div>
                 <p className="text-xs text-slate-500 font-sans leading-relaxed">
-                  <span className="font-semibold text-slate-700">Simulation Advice:</span> {simulations[0].recommendation}
+                  <span className="font-semibold text-slate-700">Career Advice:</span> {simulations[0].recommendation}
                 </p>
               </div>
             ) : (
               <div className="p-8 text-center text-slate-400 text-xs font-sans">
-                No simulated trajectories yet. Activate the Scenario Simulator!
+                No career paths explored yet. Open Career Paths to compare options.
               </div>
             )}
           </div>
@@ -244,7 +244,7 @@ export default function Dashboard({ state, setActiveTab }: DashboardProps) {
           <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-4">
             <div className="flex items-center justify-between border-b border-slate-100 pb-4">
               <h3 className="font-geist font-bold text-slate-900 text-sm tracking-tight uppercase flex items-center gap-1.5">
-                <Target className="h-4.5 w-4.5 text-indigo-600" /> Core Ambitions Status
+                <Target className="h-4.5 w-4.5 text-indigo-600" /> Goal Status
               </h3>
               <button 
                 onClick={() => setActiveTab("goals")}
@@ -288,13 +288,13 @@ export default function Dashboard({ state, setActiveTab }: DashboardProps) {
           <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-4">
             <div className="flex items-center justify-between border-b border-slate-100 pb-4">
               <h3 className="font-geist font-bold text-slate-900 text-sm tracking-tight uppercase flex items-center gap-1.5">
-                <Clock className="h-4.5 w-4.5 text-slate-600" /> Life Vector Timeline
+                <Clock className="h-4.5 w-4.5 text-slate-600" /> Life Timeline
               </h3>
               <button 
                 onClick={() => setActiveTab("timeline")}
                 className="text-xs font-semibold text-slate-600 hover:text-slate-800"
               >
-                View Feed
+                View Timeline
               </button>
             </div>
 

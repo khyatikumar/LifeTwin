@@ -13,9 +13,9 @@ export default function DecisionTwin({ decisions, onConsultTwin }: DecisionTwinP
   const [activeDecision, setActiveDecision] = useState<AIDecision | null>(null);
 
   const templates = [
-    "Should I accept the relocate offer to Zurich as Project Lead?",
+    "Should I accept a project lead role in Zurich?",
     "Should I acquire the smart-home real estate property in Switzerland?",
-    "Is pursuing a PhD in AI Ethics aligned with my long-term CTO ambition?",
+    "Should I pursue a PhD to support my long-term leadership goal?",
     "Should I allocate 15% more budget into high-yield stock index investments?"
   ];
 
@@ -42,16 +42,16 @@ export default function DecisionTwin({ decisions, onConsultTwin }: DecisionTwinP
       <div className="bg-white p-6 md:p-8 rounded-2xl border border-slate-200/80 shadow-sm space-y-6">
         <div className="border-b border-slate-100 pb-4">
           <h3 className="text-base font-bold text-slate-900 tracking-tight uppercase font-geist flex items-center gap-2">
-            <Brain className="h-5 w-5 text-indigo-600" /> Consult Twin Brain Core
+            <Brain className="h-5 w-5 text-indigo-600" /> Decision Guide
           </h3>
           <p className="text-xs text-slate-500 font-sans">
-            Pose structured decisions. LifeTwin AI references your credentials, financial surpluses, and goals to predict optimal paths.
+            Ask an important question and compare it with your profile, money picture, and goals.
           </p>
         </div>
 
         {/* Suggested Templates */}
         <div className="space-y-2">
-          <label className="text-[10px] font-semibold text-slate-400 uppercase tracking-wide">Suggested Quick-Model Queries</label>
+          <label className="text-[10px] font-semibold text-slate-400 uppercase tracking-wide">Suggested Questions</label>
           <div className="flex flex-wrap gap-2">
             {templates.map((t) => (
               <button
@@ -68,7 +68,7 @@ export default function DecisionTwin({ decisions, onConsultTwin }: DecisionTwinP
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide">Pose High-Stakes Decision</label>
+            <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide">Your Decision Question</label>
             <div className="relative">
               <MessageSquare className="absolute left-3.5 top-3.5 h-5 w-5 text-slate-400" />
               <input
@@ -90,11 +90,11 @@ export default function DecisionTwin({ decisions, onConsultTwin }: DecisionTwinP
           >
             {isSubmitting ? (
               <>
-                <RefreshCw className="h-4.5 w-4.5 animate-spin" /> Synthesizing decision matrix...
+                <RefreshCw className="h-4.5 w-4.5 animate-spin" /> Reviewing your decision...
               </>
             ) : (
               <>
-                <Cpu className="h-4.5 w-4.5" /> Initialize Twin Intellect Analysis
+                <Cpu className="h-4.5 w-4.5" /> Get Decision Guidance
               </>
             )}
           </button>
@@ -109,7 +109,7 @@ export default function DecisionTwin({ decisions, onConsultTwin }: DecisionTwinP
           <div className="flex items-center justify-between border-b border-slate-100 pb-4">
             <div className="space-y-0.5">
               <span className="text-[9px] font-mono bg-indigo-50 text-indigo-600 px-2 py-0.5 rounded font-semibold border border-indigo-100 uppercase tracking-widest flex items-center gap-1.5 w-fit">
-                <Sparkles className="h-3 w-3 animate-pulse" /> Alignment Synthesized
+                <Sparkles className="h-3 w-3 animate-pulse" /> Recommendation Ready
               </span>
               <h4 className="text-sm font-bold text-slate-900 leading-tight font-geist mt-1.5">
                 Query: {activeDecision.question}
@@ -117,14 +117,14 @@ export default function DecisionTwin({ decisions, onConsultTwin }: DecisionTwinP
             </div>
 
             <div className="bg-indigo-50 border border-indigo-100 rounded-xl px-4 py-2 text-center shrink-0">
-              <p className="text-[9px] font-mono text-indigo-600 uppercase">Alignment Match</p>
+            <p className="text-[9px] font-mono text-indigo-600 uppercase">Goal Fit</p>
               <h3 className="text-2xl font-geist font-bold text-indigo-700">{activeDecision.confidenceScore}%</h3>
             </div>
           </div>
 
           {/* Recommendation Block */}
           <div className="space-y-1.5 p-4 bg-indigo-50/50 border border-indigo-100/60 rounded-xl">
-            <p className="text-[10px] font-semibold text-indigo-600 uppercase tracking-wider">Twin Recommendation</p>
+            <p className="text-[10px] font-semibold text-indigo-600 uppercase tracking-wider">Recommendation</p>
             <p className="text-xs font-semibold text-slate-900 leading-relaxed font-geist">
               {activeDecision.recommendation}
             </p>
@@ -132,7 +132,7 @@ export default function DecisionTwin({ decisions, onConsultTwin }: DecisionTwinP
 
           {/* Reasoning */}
           <div className="space-y-2">
-            <h5 className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Strategic Reasoning Matrix</h5>
+            <h5 className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Reasoning</h5>
             <p className="text-xs text-slate-600 leading-relaxed font-sans whitespace-pre-line">
               {activeDecision.reasoning}
             </p>
@@ -140,7 +140,7 @@ export default function DecisionTwin({ decisions, onConsultTwin }: DecisionTwinP
 
           {/* Footnotes */}
           <div className="pt-4 border-t border-slate-100 flex items-center gap-2 text-[10px] text-slate-400 font-mono">
-            <ShieldCheck className="h-4 w-4 text-emerald-500" /> Decisive parameters verified against your synced profile, goals, financial data, and timeline constraints.
+            <ShieldCheck className="h-4 w-4 text-emerald-500" /> Checked against your saved profile, goals, money details, and timeline.
           </div>
         </div>
       )}
@@ -148,7 +148,7 @@ export default function DecisionTwin({ decisions, onConsultTwin }: DecisionTwinP
       {/* Decision Log Directory */}
       <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-4">
         <h4 className="text-xs font-bold text-slate-900 tracking-tight uppercase font-geist flex items-center gap-1.5 border-b border-slate-100 pb-3">
-          <BarChart2 className="h-4 w-4 text-slate-500" /> Historic Alignments Catalog
+          <BarChart2 className="h-4 w-4 text-slate-500" /> Decision History
         </h4>
 
         <div className="space-y-4">
@@ -174,7 +174,7 @@ export default function DecisionTwin({ decisions, onConsultTwin }: DecisionTwinP
           ))}
 
           {decisions.length === 0 && (
-            <p className="text-center p-6 text-slate-400 text-xs font-sans">No decisions synchronized in catalog yet.</p>
+            <p className="text-center p-6 text-slate-400 text-xs font-sans">No decisions saved yet.</p>
           )}
         </div>
       </div>

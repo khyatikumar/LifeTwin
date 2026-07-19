@@ -26,7 +26,7 @@ export default function GoalsList({ goals, onAddGoal, onDeleteGoal, onUpdateGoal
 
     setIsSubmitting(true);
     try {
-      // Calculate a highly realistic mock probability string based on priority & targetYear
+      // Calculate a simple readiness label based on priority.
       const mockProb = priority === 'HIGH' ? "78% Align" : priority === 'MED' ? "88% Match" : "94% Match";
       await onAddGoal({
         name,
@@ -63,10 +63,10 @@ export default function GoalsList({ goals, onAddGoal, onDeleteGoal, onUpdateGoal
       <div className="flex justify-between items-center bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm">
         <div>
           <h3 className="text-sm font-bold text-slate-900 tracking-tight uppercase font-geist">
-            Strategic Ambitions Tracker
+            Life Goals Tracker
           </h3>
           <p className="text-xs text-slate-500 font-sans mt-0.5">
-            Model and track high-stakes targets. Digital twin predicts alignment match in real-time.
+            Add important goals and track how ready you are to reach them.
           </p>
         </div>
         <button
@@ -77,7 +77,7 @@ export default function GoalsList({ goals, onAddGoal, onDeleteGoal, onUpdateGoal
               : "bg-indigo-600 hover:bg-indigo-700 text-white shadow-lg shadow-indigo-600/15"
           }`}
         >
-          <Plus className="h-4 w-4" /> {showAddForm ? "Collapse Panel" : "Register Ambition"}
+          <Plus className="h-4 w-4" /> {showAddForm ? "Close Form" : "Add Goal"}
         </button>
       </div>
 
@@ -85,20 +85,20 @@ export default function GoalsList({ goals, onAddGoal, onDeleteGoal, onUpdateGoal
       {showAddForm && (
         <form onSubmit={handleSubmit} className="bg-white p-6 rounded-2xl border border-slate-200 shadow-md space-y-5 animate-fade-in">
           <div className="border-b border-slate-100 pb-3">
-            <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wide">Configure Strategic Path</h4>
-            <p className="text-[11px] text-slate-400">Establish metrics and coordinate simulated constraints.</p>
+            <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wide">Create Goal</h4>
+            <p className="text-[11px] text-slate-400">Add the target, year, location, and reason it matters.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             
             {/* Goal Name */}
             <div className="space-y-1">
-              <label className="text-[11px] font-semibold text-slate-500 uppercase">Goal Name / Objective</label>
+              <label className="text-[11px] font-semibold text-slate-500 uppercase">Goal Name</label>
               <input
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="e.g. Acquire Zurich Startup Equity"
+                placeholder="e.g. Move into a Zurich leadership role"
                 className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3.5 text-xs text-slate-800 focus:outline-none focus:border-indigo-600 focus:bg-white transition-all"
                 required
               />
@@ -106,7 +106,7 @@ export default function GoalsList({ goals, onAddGoal, onDeleteGoal, onUpdateGoal
 
             {/* Goal Type */}
             <div className="space-y-1">
-              <label className="text-[11px] font-semibold text-slate-500 uppercase">Ambition Category</label>
+              <label className="text-[11px] font-semibold text-slate-500 uppercase">Goal Category</label>
               <select
                 value={type}
                 onChange={(e) => setType(e.target.value)}
@@ -118,7 +118,7 @@ export default function GoalsList({ goals, onAddGoal, onDeleteGoal, onUpdateGoal
 
             {/* Target Year */}
             <div className="space-y-1">
-              <label className="text-[11px] font-semibold text-slate-500 uppercase">Target Milestone Year</label>
+              <label className="text-[11px] font-semibold text-slate-500 uppercase">Target Year</label>
               <input
                 type="number"
                 value={targetYear}
@@ -132,7 +132,7 @@ export default function GoalsList({ goals, onAddGoal, onDeleteGoal, onUpdateGoal
 
             {/* Target Country */}
             <div className="space-y-1">
-              <label className="text-[11px] font-semibold text-slate-500 uppercase">Target Geography</label>
+              <label className="text-[11px] font-semibold text-slate-500 uppercase">Target Location</label>
               <select
                 value={targetCountry}
                 onChange={(e) => setTargetCountry(e.target.value)}
@@ -144,7 +144,7 @@ export default function GoalsList({ goals, onAddGoal, onDeleteGoal, onUpdateGoal
 
             {/* Target Capital Requirement */}
             <div className="space-y-1">
-              <label className="text-[11px] font-semibold text-slate-500 uppercase">Projected Valuation / Target Capital (USD)</label>
+              <label className="text-[11px] font-semibold text-slate-500 uppercase">Target Amount (USD)</label>
               <input
                 type="number"
                 value={targetIncome}
@@ -156,7 +156,7 @@ export default function GoalsList({ goals, onAddGoal, onDeleteGoal, onUpdateGoal
 
             {/* Priority */}
             <div className="space-y-1">
-              <label className="text-[11px] font-semibold text-slate-500 uppercase">Priority Classification</label>
+              <label className="text-[11px] font-semibold text-slate-500 uppercase">Priority</label>
               <div className="flex gap-4 pt-1">
                 {(["HIGH", "MED", "LOW"] as GoalPriority[]).map((p) => (
                   <label key={p} className="flex items-center gap-1.5 cursor-pointer text-xs">
@@ -178,11 +178,11 @@ export default function GoalsList({ goals, onAddGoal, onDeleteGoal, onUpdateGoal
 
             {/* Description */}
             <div className="space-y-1 md:col-span-2">
-              <label className="text-[11px] font-semibold text-slate-500 uppercase">Strategic Intent Statement</label>
+              <label className="text-[11px] font-semibold text-slate-500 uppercase">Why This Goal Matters</label>
               <textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                placeholder="Detail why this milestone holds importance for your digital trajectory."
+                placeholder="Describe why this milestone matters to your life plan."
                 className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 px-3.5 text-xs text-slate-800 focus:outline-none min-h-[60px]"
                 required
               />
@@ -196,7 +196,7 @@ export default function GoalsList({ goals, onAddGoal, onDeleteGoal, onUpdateGoal
             className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold rounded-xl flex items-center gap-1.5 cursor-pointer shadow-md"
           >
             <Sparkles className="h-4 w-4 animate-spin" />
-            {isSubmitting ? "Compiling..." : "Synchronize Goal Vector"}
+            {isSubmitting ? "Saving..." : "Save Goal"}
           </button>
         </form>
       )}
@@ -256,7 +256,7 @@ export default function GoalsList({ goals, onAddGoal, onDeleteGoal, onUpdateGoal
                 {goal.targetIncome > 0 && (
                   <div className="flex items-center gap-1.5 col-span-2 min-w-0">
                     <DollarSign className="h-3.5 w-3.5 text-slate-400 shrink-0" />
-                    <span className="truncate">Capital Value Target: ${goal.targetIncome.toLocaleString()}</span>
+                    <span className="truncate">Target Amount: ${goal.targetIncome.toLocaleString()}</span>
                   </div>
                 )}
               </div>
@@ -264,7 +264,7 @@ export default function GoalsList({ goals, onAddGoal, onDeleteGoal, onUpdateGoal
               {/* Status and Alignment probability */}
               <div className="flex justify-between items-center border-t border-slate-100 pt-3">
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-semibold text-slate-500">Observation State:</span>
+                  <span className="text-xs font-semibold text-slate-500">Status:</span>
                   <select
                     value={goal.status}
                     onChange={(e) => onUpdateGoalStatus(goal.id, e.target.value as GoalStatus)}
@@ -278,7 +278,7 @@ export default function GoalsList({ goals, onAddGoal, onDeleteGoal, onUpdateGoal
 
                 <div className="text-right shrink-0">
                   <span className="text-[11px] font-mono bg-indigo-600 text-white font-bold px-2 py-1 rounded shadow-sm shadow-indigo-600/10">
-                    {goal.probability || "Awaiting Sync"}
+                    {goal.probability || "Checking"}
                   </span>
                 </div>
               </div>
@@ -290,7 +290,7 @@ export default function GoalsList({ goals, onAddGoal, onDeleteGoal, onUpdateGoal
         {goals.length === 0 && (
           <div className="col-span-2 p-12 bg-white rounded-2xl border border-slate-200 text-center space-y-3">
             <AlertCircle className="h-8 w-8 text-slate-400 mx-auto" />
-            <p className="text-xs text-slate-500 font-sans">Strategic ambitions inventory is empty. Register a goal above!</p>
+            <p className="text-xs text-slate-500 font-sans">Your goal list is empty. Add a goal above.</p>
           </div>
         )}
       </div>

@@ -13,23 +13,23 @@ export default function Navbar({ activeTab, userFullName, isSaving = false, isDa
   const getPageTitle = () => {
     switch (activeTab) {
       case "dashboard":
-        return "Command Center";
+        return "Home Overview";
       case "profile":
-        return "Digital Identity Vector";
+        return "Personal Profile";
       case "financial":
-        return "Financial Architecture";
+        return "Money Profile";
       case "goals":
-        return "Strategic Ambitions";
+        return "Life Goals";
       case "timeline":
-        return "Chronological Life Vector";
+        return "Life Timeline";
       case "decision":
-        return "AI Decision Laboratory";
+        return "Decision Guide";
       case "simulation":
-        return "Future Scenario Simulator";
+        return "Career Path Explorer";
       case "history":
-        return "Historic Decisions Log";
+        return "Decision History";
       case "settings":
-        return "Core Configuration";
+        return "Account Settings";
       default:
         return "Dashboard";
     }
@@ -38,25 +38,25 @@ export default function Navbar({ activeTab, userFullName, isSaving = false, isDa
   const getPageSubtitle = () => {
     switch (activeTab) {
       case "dashboard":
-        return "Bento aggregate of your simulated life, active priorities, and twin health.";
+        return "A simple view of your profile, priorities, choices, and progress.";
       case "profile":
-        return "Manage your demographic, career credentials, and professional telemetry.";
+        return "Manage your personal details, education, career, and goals.";
       case "financial":
-        return "Configure your cash flows, asset allocations, liabilities, and safety nets.";
+        return "Track income, expenses, savings, investments, loans, and safety funds.";
       case "goals":
-        return "Establish milestones and calculate real-time AI probability matching.";
+        return "Set important goals and follow your progress toward them.";
       case "timeline":
-        return "Real-time sync of personal milestones, financial entries, and updates.";
+        return "Keep important personal, career, and financial moments in one place.";
       case "decision":
-        return "Ask high-stakes questions to obtain custom alignment scores and strategic paths.";
+        return "Ask important questions and compare choices against your life goals.";
       case "simulation":
-        return "Model structural decisions to compare future income deltas and recommendations.";
+        return "Compare possible career paths, income changes, and next steps.";
       case "history":
-        return "Audit previous decisions, twin alignments, and generated pathways.";
+        return "Review your previous questions, answers, and career path notes.";
       case "settings":
-        return "Manage secure keys, data protocols, and privacy mode constraints.";
+        return "Manage notifications, privacy, and account preferences.";
       default:
-        return "Digital Decision Twin Sandbox";
+        return "LifeTwin planning workspace";
     }
   };
 
@@ -70,7 +70,7 @@ export default function Navbar({ activeTab, userFullName, isSaving = false, isDa
           {getPageTitle()}
           {activeTab === "decision" && (
             <span className="flex items-center gap-1 text-[10px] bg-indigo-50 text-indigo-700 px-1.5 py-0.5 rounded font-mono border border-indigo-100">
-              <Sparkles className="h-3 w-3 animate-spin" /> Custom Model
+              <Sparkles className="h-3 w-3 animate-spin" /> Personal Guide
             </span>
           )}
         </h2>
@@ -95,12 +95,12 @@ export default function Navbar({ activeTab, userFullName, isSaving = false, isDa
           {isSaving ? (
             <>
               <RefreshCw className="h-3 w-3 text-indigo-600 animate-spin" />
-              <span className="font-mono text-indigo-600">Syncing changes...</span>
+              <span className="font-mono text-indigo-600">Saving changes...</span>
             </>
           ) : (
             <>
               <CloudCheck className="h-4 w-4 text-emerald-500" />
-              <span className="font-mono text-slate-500">Synced to Cloud</span>
+              <span className="font-mono text-slate-500">All changes saved</span>
             </>
           )}
         </div>
@@ -111,7 +111,7 @@ export default function Navbar({ activeTab, userFullName, isSaving = false, isDa
             {userFullName || "Alex Sterling"}
           </p>
           <p className="text-[10px] text-slate-400 font-mono">
-            Model: gemini-3.5-flash
+            LifeTwin member
           </p>
         </div>
       </div>

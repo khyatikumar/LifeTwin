@@ -23,12 +23,12 @@ interface SidebarProps {
 export default function Sidebar({ activeTab, setActiveTab, userFullName, onLogout }: SidebarProps) {
   const menuItems = [
     { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
-    { id: "profile", label: "User Profile", icon: User },
-    { id: "financial", label: "Financial Profile", icon: Wallet },
-    { id: "goals", label: "Goals Tracker", icon: Target },
+    { id: "profile", label: "Personal Profile", icon: User },
+    { id: "financial", label: "Money Profile", icon: Wallet },
+    { id: "goals", label: "Life Goals", icon: Target },
     { id: "timeline", label: "Life Timeline", icon: Activity },
-    { id: "decision", label: "AI Decision Twin", icon: Brain, badge: "AI" },
-    { id: "simulation", label: "Career Simulation", icon: Compass, badge: "Beta" },
+    { id: "decision", label: "Decision Guide", icon: Brain, badge: "New" },
+    { id: "simulation", label: "Career Paths", icon: Compass, badge: "Plan" },
     { id: "history", label: "Decision History", icon: History },
     { id: "settings", label: "Settings", icon: Settings },
   ];
@@ -45,10 +45,10 @@ export default function Sidebar({ activeTab, setActiveTab, userFullName, onLogou
         </div>
         <div>
           <h1 className="font-geist font-bold text-lg text-slate-900 tracking-tight leading-tight">
-            LifeTwin AI
+            LifeTwin
           </h1>
           <p className="text-[10px] font-mono text-slate-450 tracking-wider uppercase">
-            Digital Decision Twin
+            Personal Decision Guide
           </p>
         </div>
       </div>
@@ -79,7 +79,7 @@ export default function Sidebar({ activeTab, setActiveTab, userFullName, onLogou
                 <span className={`text-[10px] font-semibold px-1.5 py-0.5 rounded ${
                   isActive 
                     ? "bg-indigo-500 text-white" 
-                    : item.badge === "AI" 
+                    : item.badge === "New" 
                       ? "bg-indigo-50 text-indigo-600 border border-indigo-100" 
                       : "bg-slate-100 text-slate-500"
                 }`}>
@@ -103,7 +103,7 @@ export default function Sidebar({ activeTab, setActiveTab, userFullName, onLogou
             </h2>
             <p className="text-[10px] text-emerald-600 flex items-center gap-1 font-mono">
               <span className="h-1.5 w-1.5 bg-emerald-500 rounded-full animate-pulse inline-block"></span>
-              Live Twin Online
+              Planning profile active
             </p>
           </div>
           <button

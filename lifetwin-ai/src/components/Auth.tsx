@@ -79,38 +79,38 @@ export default function Auth({ onLoginSuccess }: AuthProps) {
             <Sparkles className="h-5.5 w-5.5" />
           </div>
           <div>
-            <span className="font-geist font-bold text-slate-900 tracking-tight text-xl">LifeTwin AI</span>
-            <p className="text-[10px] text-indigo-600 font-mono tracking-wider uppercase">Precision Decision Twin</p>
+            <span className="font-geist font-bold text-slate-900 tracking-tight text-xl">LifeTwin</span>
+            <p className="text-[10px] text-indigo-600 font-mono tracking-wider uppercase">Personal Decision Guide</p>
           </div>
         </div>
 
         {/* Informative Value Proposition Copy */}
         <div className="relative z-10 my-12 md:my-0 space-y-6 max-w-md">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-indigo-550/10 text-indigo-700 text-xs font-mono rounded-full border border-indigo-200/50">
-            <Brain className="h-3.5 w-3.5 animate-pulse" /> Platform Vector Active
+            <Brain className="h-3.5 w-3.5 animate-pulse" /> Life Plan Ready
           </div>
           <h2 className="font-geist font-bold text-3xl md:text-4xl text-slate-900 tracking-tight leading-tight">
-            Synthesize your life decisions through a digital twin.
+            Plan your next life decision with more clarity.
           </h2>
           <p className="text-slate-600 text-sm leading-relaxed">
-            By modeling your professional credentials, financial health, and strategic goals, LifeTwin AI deploys server-side intelligence to run future career simulations, analyze alignments, and reduce risk.
+            LifeTwin brings your career profile, money picture, and personal goals together so you can compare choices with confidence.
           </p>
 
           <div className="pt-4 grid grid-cols-2 gap-4 border-t border-slate-200">
             <div>
               <p className="text-slate-900 font-geist font-semibold text-lg">74%</p>
-              <p className="text-[11px] text-slate-500">Real-time Goal Probability</p>
+              <p className="text-[11px] text-slate-500">Goal Readiness Score</p>
             </div>
             <div>
               <p className="text-slate-900 font-geist font-semibold text-lg">Instant</p>
-              <p className="text-[11px] text-slate-500">Career Trajectory Modeling</p>
+              <p className="text-[11px] text-slate-500">Career Path Planning</p>
             </div>
           </div>
         </div>
 
         {/* Footer Credit */}
         <div className="relative z-10 text-slate-400 text-xs font-mono">
-          © 2026 LifeTwin AI Technologies. Secure Server Environment.
+          © 2026 LifeTwin. Private planning workspace.
         </div>
       </div>
 
@@ -131,8 +131,8 @@ export default function Auth({ onLoginSuccess }: AuthProps) {
           {/* Quick Demo Login Shortcut */}
           <div className="p-4 bg-indigo-50 border border-indigo-100 rounded-xl flex items-center justify-between gap-4">
             <div>
-              <span className="text-[10px] font-mono text-indigo-600 uppercase font-semibold">Testing Sandbox</span>
-              <p className="text-xs text-slate-600">Click to autofill pre-loaded high-fidelity profile</p>
+              <span className="text-[10px] font-mono text-indigo-600 uppercase font-semibold">Sample Profile</span>
+              <p className="text-xs text-slate-600">Fill the form with example account details</p>
             </div>
             <button
               type="button"
@@ -193,7 +193,7 @@ export default function Auth({ onLoginSuccess }: AuthProps) {
                 {!isSignup && (
                   <button 
                     type="button"
-                    onClick={() => alert("Sandbox Mode: Autofill is recommended, password is 'password123'.")} 
+                    onClick={() => alert("Use the sample profile or enter your account password.")} 
                     className="text-[11px] text-indigo-600 hover:underline hover:text-indigo-700"
                   >
                     Forgot?

@@ -314,8 +314,8 @@ export default function App() {
       <div className="h-screen w-screen bg-white flex flex-col items-center justify-center text-slate-500 gap-4 font-sans select-none">
         <Loader2 className="h-10 w-10 text-indigo-600 animate-spin" />
         <div className="text-center space-y-1">
-          <p className="text-sm font-semibold text-slate-900 font-geist">Calibrating LifeTwin AI</p>
-          <p className="text-xs text-slate-400">{error || "Synchronizing secure credentials from storage vector..."}</p>
+          <p className="text-sm font-semibold text-slate-900 font-geist">Preparing LifeTwin</p>
+          <p className="text-xs text-slate-400">{error || "Loading your saved planning profile..."}</p>
         </div>
       </div>
     );
@@ -357,10 +357,10 @@ export default function App() {
           <div className="space-y-6 max-w-4xl animate-fade-in bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
             <div className="border-b border-slate-100 pb-4">
               <h3 className="text-base font-bold text-slate-900 tracking-tight uppercase font-geist">
-                Historic Calibration Logs
+                Decision History
               </h3>
               <p className="text-xs text-slate-500 font-sans">
-                Audit complete logs of historical decisions and trajectory simulations processed by your twin brain.
+                Review past decisions, career path notes, and the advice you saved.
               </p>
             </div>
             
@@ -375,9 +375,9 @@ export default function App() {
                   <p><span className="font-semibold text-indigo-600">Decision:</span> {dec.recommendation}</p>
                 </div>
               ))}
-              {state.decisions.length === 0 && <p className="text-xs text-slate-400 font-sans">No decisions synchronized in timeline yet.</p>}
+              {state.decisions.length === 0 && <p className="text-xs text-slate-400 font-sans">No decisions saved yet.</p>}
 
-              <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider font-mono mt-8">Career Path Simulations</h4>
+              <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider font-mono mt-8">Career Path Reviews</h4>
               {state.simulations.map((sim) => (
                 <div key={sim.id} className="p-4 bg-slate-50 rounded-xl border border-slate-150 text-xs text-slate-700 leading-relaxed space-y-1">
                   <div className="flex justify-between font-bold">
@@ -387,7 +387,7 @@ export default function App() {
                   <p><span className="font-semibold text-slate-800">Advice:</span> {sim.recommendation}</p>
                 </div>
               ))}
-              {state.simulations.length === 0 && <p className="text-xs text-slate-400 font-sans">No simulated trajectories cataloged yet.</p>}
+              {state.simulations.length === 0 && <p className="text-xs text-slate-400 font-sans">No career paths saved yet.</p>}
             </div>
           </div>
         );

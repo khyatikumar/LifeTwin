@@ -13,8 +13,8 @@ export default function CareerSimulation({ simulations, onRunSimulation }: Caree
   const [activeSim, setActiveSim] = useState<SimulationResult | null>(null);
 
   const templates = [
-    "Project Lead position in Zurich, Switzerland vs. Austin, TX Tech Lead",
-    "Chief Technology Officer at Series A AI startup vs. Director of Strategy in Corporate",
+    "Project Lead position in Zurich vs. Team Lead role in Austin",
+    "Head of Product at a growing company vs. Director of Strategy",
     "Independent Consultant route vs. Staying full-time Director"
   ];
 
@@ -41,16 +41,16 @@ export default function CareerSimulation({ simulations, onRunSimulation }: Caree
       <div className="bg-white p-6 md:p-8 rounded-2xl border border-slate-200/80 shadow-sm space-y-6">
         <div className="border-b border-slate-100 pb-4">
           <h3 className="text-base font-bold text-slate-900 tracking-tight uppercase font-geist flex items-center gap-2">
-            <Compass className="h-5 w-5 text-indigo-600" /> Career Scenario Simulation Lab
+            <Compass className="h-5 w-5 text-indigo-600" /> Career Path Explorer
           </h3>
           <p className="text-xs text-slate-500 font-sans">
-            Model professional vectors. Compare simulated annual compensations and strategic wealth accumulation paths.
+            Compare career options, possible income changes, and long-term fit.
           </p>
         </div>
 
         {/* Templates */}
         <div className="space-y-2">
-          <label className="text-[10px] font-semibold text-slate-400 uppercase tracking-wide">Suggested Scenarios to Model</label>
+          <label className="text-[10px] font-semibold text-slate-400 uppercase tracking-wide">Suggested Career Paths</label>
           <div className="flex flex-wrap gap-2">
             {templates.map((t) => (
               <button
@@ -67,14 +67,14 @@ export default function CareerSimulation({ simulations, onRunSimulation }: Caree
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide">Describe Simulated Career Path / Relocation</label>
+            <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide">Describe Career Path or Move</label>
             <div className="relative">
               <Compass className="absolute left-3.5 top-3.5 h-5 w-5 text-slate-400" />
               <input
                 type="text"
                 value={question}
                 onChange={(e) => setQuestion(e.target.value)}
-                placeholder="e.g. Zurich Project Lead with 225k gross compensation..."
+                placeholder="e.g. Zurich Project Lead with 225k annual pay..."
                 className="w-full bg-slate-50 border border-slate-200/80 rounded-xl py-3 pl-11 pr-4 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-indigo-600 focus:bg-white transition-all"
                 required
                 disabled={isSubmitting}
@@ -89,11 +89,11 @@ export default function CareerSimulation({ simulations, onRunSimulation }: Caree
           >
             {isSubmitting ? (
               <>
-                <RefreshCw className="h-4.5 w-4.5 animate-spin" /> Simulating career models...
+                <RefreshCw className="h-4.5 w-4.5 animate-spin" /> Comparing career paths...
               </>
             ) : (
               <>
-                <Sparkles className="h-4.5 w-4.5" /> Initialize Scenario Modeling
+                <Sparkles className="h-4.5 w-4.5" /> Compare Career Path
               </>
             )}
           </button>
@@ -106,7 +106,7 @@ export default function CareerSimulation({ simulations, onRunSimulation }: Caree
           <div className="border-b border-slate-100 pb-4 flex justify-between items-center">
             <div>
               <span className="text-[9px] font-mono bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded font-semibold border border-emerald-100 uppercase">
-                Scenario Modeled
+                Career Path Reviewed
               </span>
               <h4 className="text-sm font-bold text-slate-900 leading-tight font-geist mt-1">
                 {activeSim.question}
@@ -117,13 +117,13 @@ export default function CareerSimulation({ simulations, onRunSimulation }: Caree
 
           {/* Visualizing Compensation Deltas */}
           <div className="space-y-4">
-            <h5 className="text-[10px] font-semibold text-slate-400 uppercase tracking-wide">Comparative Annual Income Deltas</h5>
+            <h5 className="text-[10px] font-semibold text-slate-400 uppercase tracking-wide">Annual Income Comparison</h5>
             
             <div className="space-y-3.5">
               {/* Baseline */}
               <div className="space-y-1.5">
                 <div className="flex justify-between text-xs font-mono">
-                  <span className="text-slate-500 font-sans font-medium">Current Baseline Profile</span>
+                  <span className="text-slate-500 font-sans font-medium">Current Role</span>
                   <span className="text-slate-800 font-bold">${activeSim.currentSalary.toLocaleString()}/yr</span>
                 </div>
                 <div className="h-6 w-full bg-slate-100 rounded-full overflow-hidden flex items-center">
@@ -134,7 +134,7 @@ export default function CareerSimulation({ simulations, onRunSimulation }: Caree
               {/* Simulated */}
               <div className="space-y-1.5">
                 <div className="flex justify-between text-xs font-mono">
-                  <span className="text-indigo-600 font-sans font-bold">Simulated Trajectory</span>
+                  <span className="text-indigo-600 font-sans font-bold">Possible Path</span>
                   <span className="text-indigo-600 font-bold">${activeSim.simulatedSalary.toLocaleString()}/yr</span>
                 </div>
                 <div className="h-6 w-full bg-slate-100 rounded-full overflow-hidden flex items-center">
@@ -151,7 +151,7 @@ export default function CareerSimulation({ simulations, onRunSimulation }: Caree
           {/* Simulation recommendation text */}
           <div className="p-4 bg-emerald-50 border border-emerald-100 rounded-xl space-y-1">
             <h5 className="text-[10px] font-semibold text-emerald-800 uppercase tracking-wide flex items-center gap-1.5 font-geist">
-              <TrendingUp className="h-4 w-4" /> Twin Trajectory Analysis
+              <TrendingUp className="h-4 w-4" /> Career Path Advice
             </h5>
             <p className="text-xs text-slate-700 leading-relaxed font-sans font-medium">
               {activeSim.recommendation}
@@ -163,7 +163,7 @@ export default function CareerSimulation({ simulations, onRunSimulation }: Caree
       {/* Directory of past simulations */}
       <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-4">
         <h4 className="text-xs font-bold text-slate-900 tracking-tight uppercase font-geist flex items-center gap-1.5 border-b border-slate-100 pb-3">
-          <BarChart className="h-4 w-4 text-slate-500" /> Simulated Trajectories Inventory
+          <BarChart className="h-4 w-4 text-slate-500" /> Saved Career Paths
         </h4>
 
         <div className="space-y-4">
@@ -181,23 +181,23 @@ export default function CareerSimulation({ simulations, onRunSimulation }: Caree
 
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs font-mono p-2 bg-white rounded-lg border border-slate-100">
                 <div>
-                  <span className="text-[10px] text-slate-400 font-sans block">Baseline Salary</span>
+                  <span className="text-[10px] text-slate-400 font-sans block">Current Salary</span>
                   <span className="font-semibold text-slate-700">${sim.currentSalary.toLocaleString()}</span>
                 </div>
                 <div>
-                  <span className="text-[10px] text-slate-400 font-sans block">Simulated Salary</span>
+                  <span className="text-[10px] text-slate-400 font-sans block">Possible Salary</span>
                   <span className="font-semibold text-indigo-600">${sim.simulatedSalary.toLocaleString()}</span>
                 </div>
               </div>
 
               <p className="text-[11px] text-slate-600 leading-relaxed font-sans">
-                <span className="font-semibold text-slate-800">Trajectory recommendation:</span> {sim.recommendation}
+                <span className="font-semibold text-slate-800">Career recommendation:</span> {sim.recommendation}
               </p>
             </div>
           ))}
 
           {simulations.length === 0 && (
-            <p className="text-center p-6 text-slate-400 text-xs font-sans">No simulations recorded in inventory yet.</p>
+            <p className="text-center p-6 text-slate-400 text-xs font-sans">No career paths saved yet.</p>
           )}
         </div>
       </div>

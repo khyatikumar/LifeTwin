@@ -75,6 +75,12 @@ export default function TimelineEvents({ timeline, onAddEvent, onUpdateEvent, on
     }
   };
 
+  const getEventLabel = (type: string) => {
+    if (type === "AI Decision") return "Decision";
+    if (type === "Simulation") return "Career Path";
+    return type;
+  };
+
   return (
     <div className="bg-white p-6 md:p-8 rounded-2xl border border-slate-200/80 shadow-sm max-w-4xl animate-fade-in space-y-6">
       
@@ -82,10 +88,10 @@ export default function TimelineEvents({ timeline, onAddEvent, onUpdateEvent, on
       <div className="flex justify-between items-center border-b border-slate-100 pb-4">
         <div>
           <h3 className="text-base font-bold text-slate-900 tracking-tight uppercase font-geist">
-            Chronological Life Vector
+            Life Timeline
           </h3>
           <p className="text-xs text-slate-500 font-sans">
-            Audit automatic synchronizations, strategic decision logs, and manual milestones.
+            Keep personal milestones, money updates, and important decisions in order.
           </p>
         </div>
         <button
@@ -96,7 +102,7 @@ export default function TimelineEvents({ timeline, onAddEvent, onUpdateEvent, on
               : "bg-indigo-600 hover:bg-indigo-700 text-white shadow-lg shadow-indigo-600/10"
           }`}
         >
-          <Plus className="h-4 w-4" /> {showForm ? "Collapse Panel" : "Register Event"}
+          <Plus className="h-4 w-4" /> {showForm ? "Close Form" : "Add Event"}
         </button>
       </div>
 
@@ -111,7 +117,7 @@ export default function TimelineEvents({ timeline, onAddEvent, onUpdateEvent, on
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                placeholder="e.g., Vanguard Portfolio Synced"
+                placeholder="e.g., Updated investment plan"
                 className="w-full bg-white border border-slate-200 rounded-lg py-2 px-3 text-xs focus:outline-none"
                 required
               />
@@ -125,7 +131,7 @@ export default function TimelineEvents({ timeline, onAddEvent, onUpdateEvent, on
                 className="w-full bg-white border border-slate-200 rounded-lg py-2 px-3 text-xs"
               >
                 {["Milestone", "Financial", "AI Decision", "Simulation", "Update"].map(t => (
-                  <option key={t} value={t}>{t}</option>
+                  <option key={t} value={t}>{getEventLabel(t)}</option>
                 ))}
               </select>
             </div>
@@ -142,12 +148,12 @@ export default function TimelineEvents({ timeline, onAddEvent, onUpdateEvent, on
             </div>
 
             <div className="md:col-span-2 space-y-1">
-              <label className="text-[10px] font-semibold text-slate-500 uppercase">Description Details</label>
+              <label className="text-[10px] font-semibold text-slate-500 uppercase">Description</label>
               <input
                 type="text"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                placeholder="e.g., Synced Vanguard investments, tracking a positive shift of 4% index growth."
+                placeholder="e.g., Reviewed investments and noted steady growth."
                 className="w-full bg-white border border-slate-200 rounded-lg py-2 px-3 text-xs focus:outline-none"
                 required
               />
@@ -160,7 +166,7 @@ export default function TimelineEvents({ timeline, onAddEvent, onUpdateEvent, on
             disabled={isSubmitting}
             className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold rounded-lg flex items-center gap-1 cursor-pointer"
           >
-            {isSubmitting ? "Registering..." : editingId ? "Update Chronological Milestone" : "Append Chronological Milestone"}
+            {isSubmitting ? "Saving..." : editingId ? "Update Event" : "Save Event"}
           </button>
         </form>
       )}
@@ -181,7 +187,7 @@ export default function TimelineEvents({ timeline, onAddEvent, onUpdateEvent, on
                 <div className="flex items-center gap-2 flex-wrap">
                   <h4 className="text-xs font-bold text-slate-900">{event.title}</h4>
                   <span className={`text-[9px] font-mono font-bold px-2 py-0.5 rounded uppercase border ${getEventBadgeClass(event.eventType)}`}>
-                    {event.eventType}
+                    {getEventLabel(event.eventType)}
                   </span>
                 </div>
                 <p className="text-xs text-slate-600 leading-relaxed font-sans">{event.description}</p>
@@ -215,7 +221,7 @@ export default function TimelineEvents({ timeline, onAddEvent, onUpdateEvent, on
 
         {timeline.length === 0 && (
           <div className="text-center p-12 text-slate-400 text-xs font-sans">
-            Your personal chronological vector is clear. Use 'Register Event' to append milestones.
+            Your timeline is empty. Use Add Event to save important milestones.
           </div>
         )}
 

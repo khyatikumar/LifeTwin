@@ -27,7 +27,7 @@ export default function FinancialForm({ financial, onUpdateFinancial }: Financia
       setSavedSuccess(true);
       setTimeout(() => setSavedSuccess(false), 3000);
     } catch (err) {
-      console.error("Failed to sync financial parameters:", err);
+      console.error("Failed to save financial details:", err);
     } finally {
       setIsSubmitting(false);
     }
@@ -46,15 +46,15 @@ export default function FinancialForm({ financial, onUpdateFinancial }: Financia
       <div className="border-b border-slate-100 pb-4 flex justify-between items-center">
         <div>
           <h3 className="text-base font-bold text-slate-900 tracking-tight uppercase font-geist">
-            Financial Architecture Panel
+            Money Profile
           </h3>
           <p className="text-xs text-slate-500 font-sans">
-            Configure monthly cash flows, wealth allocations, liabilities, and risk metrics.
+            Update income, expenses, savings, investments, loans, and risk comfort.
           </p>
         </div>
         {savedSuccess && (
           <span className="flex items-center gap-1.5 text-xs text-emerald-600 bg-emerald-50 border border-emerald-100 px-3 py-1.5 rounded-full font-semibold animate-fade-in">
-            <CheckCircle2 className="h-4 w-4" /> Financial synchronized successfully!
+            <CheckCircle2 className="h-4 w-4" /> Money profile saved successfully!
           </span>
         )}
       </div>
@@ -64,22 +64,22 @@ export default function FinancialForm({ financial, onUpdateFinancial }: Financia
         
         {/* Monthly Surplus Indicator */}
         <div className="p-4 bg-emerald-50/50 border border-emerald-100 rounded-xl space-y-1">
-          <p className="text-[10px] text-emerald-700 uppercase font-mono font-bold tracking-wider">Dynamic Cash Flow Surplus</p>
+          <p className="text-[10px] text-emerald-700 uppercase font-mono font-bold tracking-wider">Monthly Surplus</p>
           <div className="flex items-baseline gap-1">
             <span className="text-xl font-bold font-geist text-slate-900">${monthlySurplus.toLocaleString()}</span>
             <span className="text-xs text-slate-400">/mo</span>
           </div>
           <p className="text-[10px] text-emerald-600 font-sans font-medium">
-            Savings rate efficiency: {savingsRate}%
+            Savings rate: {savingsRate}%
           </p>
         </div>
 
         {/* Total Liquidity Asset Value */}
         <div className="p-4 bg-indigo-50/50 border border-indigo-100 rounded-xl space-y-1">
-          <p className="text-[10px] text-indigo-700 uppercase font-mono font-bold tracking-wider">Total Accumulated Wealth</p>
+          <p className="text-[10px] text-indigo-700 uppercase font-mono font-bold tracking-wider">Total Wealth</p>
           <span className="text-xl font-bold font-geist text-slate-900">${netWealth.toLocaleString()}</span>
           <p className="text-[10px] text-indigo-600 font-sans font-medium">
-            Savings + Active Investments
+            Savings + investments
           </p>
         </div>
 
@@ -102,7 +102,7 @@ export default function FinancialForm({ financial, onUpdateFinancial }: Financia
           
           {/* Monthly Gross Income */}
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Gross Monthly Inflow (USD)</label>
+            <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Monthly Income (USD)</label>
             <div className="relative">
               <DollarSign className="absolute left-3.5 top-3.5 h-4.5 w-4.5 text-slate-400" />
               <input
@@ -119,7 +119,7 @@ export default function FinancialForm({ financial, onUpdateFinancial }: Financia
 
           {/* Monthly Expenses */}
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Monthly Cash Outflow (USD)</label>
+            <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Monthly Expenses (USD)</label>
             <div className="relative">
               <ArrowDownRight className="absolute left-3.5 top-3.5 h-4.5 w-4.5 text-slate-400" />
               <input
@@ -136,7 +136,7 @@ export default function FinancialForm({ financial, onUpdateFinancial }: Financia
 
           {/* Liquid Savings */}
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Liquid Savings / Cash Reserves (USD)</label>
+            <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Savings (USD)</label>
             <div className="relative">
               <PiggyBank className="absolute left-3.5 top-3.5 h-4.5 w-4.5 text-slate-400" />
               <input
@@ -153,7 +153,7 @@ export default function FinancialForm({ financial, onUpdateFinancial }: Financia
 
           {/* Investments */}
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Invested Assets / Brokerage Accounts (USD)</label>
+            <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Investments (USD)</label>
             <div className="relative">
               <DollarSign className="absolute left-3.5 top-3.5 h-4.5 w-4.5 text-slate-400" />
               <input
@@ -170,7 +170,7 @@ export default function FinancialForm({ financial, onUpdateFinancial }: Financia
 
           {/* Outstanding Loans */}
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Outstanding Liabilities / Loans</label>
+            <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Outstanding Loans</label>
             <div className="relative">
               <ShieldAlert className="absolute left-3.5 top-3.5 h-4.5 w-4.5 text-slate-400" />
               <input
@@ -186,7 +186,7 @@ export default function FinancialForm({ financial, onUpdateFinancial }: Financia
 
           {/* Risk Tolerance */}
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Strategic Risk Tolerance Threshold</label>
+            <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Risk Comfort</label>
             <div className="relative">
               <Scale className="absolute left-3.5 top-3.5 h-4.5 w-4.5 text-slate-400" />
               <select
@@ -224,7 +224,7 @@ export default function FinancialForm({ financial, onUpdateFinancial }: Financia
           className="w-full md:w-auto px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-semibold transition-all hover:shadow-lg shadow-indigo-600/10 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
         >
           <Save className="h-4.5 w-4.5" />
-          {isSubmitting ? "Recalibrating..." : "Sync Financial Vector & Recalibrate"}
+          {isSubmitting ? "Saving..." : "Save Money Profile"}
         </button>
 
       </form>
