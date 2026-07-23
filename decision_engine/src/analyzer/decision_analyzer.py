@@ -1,4 +1,4 @@
-from decision_engine.src.model.predict import predict_salary
+from decision_engine.src.model.interface import PredictorInterface
 from decision_engine.src.scoring.career_score import CareerScore
 from decision_engine.src.scoring.burnout_score import BurnoutScore
 from decision_engine.src.scoring.decision_score import DecisionScore
@@ -7,6 +7,7 @@ from decision_engine.src.scoring.decision_score import DecisionScore
 career_engine = CareerScore()
 burnout_engine = BurnoutScore()
 decision_engine = DecisionScore()
+predictor = PredictorInterface()
 
 
 def analyze_decision(profile: dict):
@@ -15,7 +16,7 @@ def analyze_decision(profile: dict):
     # ML Prediction
     # ------------------------
 
-    predicted_salary = predict_salary(profile)
+    predicted_salary = predictor.predict(profile)
 
     # ------------------------
     # Career Score

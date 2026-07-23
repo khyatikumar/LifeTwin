@@ -2,6 +2,7 @@ from decision_engine.src.decision.schemas import (
     DecisionRequest,
     DecisionResult,
 )
+from decision_engine.src.model.feature_builder import FeatureBuilder
 
 from decision_engine.src.decision.context_builder import (
     DecisionContextBuilder,
@@ -32,6 +33,7 @@ class DecisionOrchestrator:
 
         self.context_builder = DecisionContextBuilder()
         self.prompt_builder = PromptBuilder()
+        self.feature_builder = FeatureBuilder()
         self.response_parser = DecisionResponseParser()
 
     def make_decision(
@@ -52,9 +54,9 @@ class DecisionOrchestrator:
         knowledge = self.rag.retrieve(request.question)
 
         # Step 3: Predict outcomes
-        prediction = self.predictor.predict(
-    self.twin.profile.to_dict()
-)
+        features = self.feature_builder.build(self.twin.profile)
+
+        prediction = self.predictor.predict(features)
 
         # Step 4: Simulate scenarios
         scenarios = self.simulator.run(self.twin)

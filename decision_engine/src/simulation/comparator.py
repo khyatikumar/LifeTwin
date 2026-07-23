@@ -1,5 +1,7 @@
 from decision_engine.src.simulation.scenario import ScenarioEngine
-from decision_engine.src.model.predict import predict_salary
+from decision_engine.src.model.interface import PredictorInterface
+
+predictor = PredictorInterface()
 
 engine = ScenarioEngine()
 
@@ -22,8 +24,8 @@ scenario_profile = engine.create_scenario(
 )
 
 # Predict salaries
-current_salary = predict_salary(current_profile)
-scenario_salary = predict_salary(scenario_profile)
+current_salary = predictor.predict(current_profile)
+scenario_salary = predictor.predict(scenario_profile)
 
 # Display results
 print("=" * 60)
